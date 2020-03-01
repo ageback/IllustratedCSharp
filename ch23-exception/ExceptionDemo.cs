@@ -24,5 +24,53 @@ namespace IllustratedCSharp.ch23_exception
                 //Console.WriteLine("处理异常 —— 保持程序运行");
             }
         }
+
+        public void ExceptionChain()
+        {
+            try
+            {
+                A();
+            }catch(DivideByZeroException)
+            {
+                Console.WriteLine("catch clause in ExceptionChain()");
+            }
+            finally
+            {
+                Console.WriteLine("finally clause in ExceptionChain()");
+                Console.WriteLine("After try statement in ExceptionChain.");
+                Console.WriteLine("             -- Keep running.");
+            }
+        }
+
+        private void A()
+        {
+            try
+            {
+                B();
+            }catch(NullReferenceException)
+            {
+                Console.WriteLine("catch clause in A()");
+            }
+            finally
+            {
+                Console.WriteLine("finally clause in A()");
+            }
+        }
+
+        private void B()
+        {
+            int x = 10, y = 0;
+            try
+            {
+                x /= y;
+            }catch(IndexOutOfRangeException)
+            {
+                Console.WriteLine("catch clause in B()");
+            }
+            finally
+            {
+                Console.WriteLine("finally clause in B()");
+            }
+        }
     }
 }

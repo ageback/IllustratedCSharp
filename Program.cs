@@ -119,7 +119,8 @@ namespace IllustratedCSharp
         private static void TestException()
         {
             ExceptionDemo demo = new ExceptionDemo();
-            demo.div();
+            //demo.div();
+            demo.ExceptionChain();
         }
 
     }
