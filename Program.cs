@@ -1,5 +1,6 @@
 ﻿using IllustratedCSharp.ch14_delegates;
 using IllustratedCSharp.ch18_generics;
+using IllustratedCSharp.ch21_asynchronous;
 using IllustratedCSharp.ch23_exception;
 using Microsoft.CSharp;
 using System;
@@ -22,7 +23,9 @@ namespace IllustratedCSharp
             //Console.WriteLine(_testNetVersion("4.8").ToString());
             //Console.WriteLine(_newTestNetVersion("4.5").ToString());
 
-            TestException();
+            //TestException();
+
+            TestMyDownloadString();
         }
 
         static void TestGenericClass()
@@ -121,6 +124,12 @@ namespace IllustratedCSharp
             ExceptionDemo demo = new ExceptionDemo();
             //demo.div();
             demo.ExceptionChain();
+        }
+
+        private static void TestMyDownloadString()
+        {
+            MyDownloadString ds = new MyDownloadString();
+            ds.DoRun();
         }
 
     }

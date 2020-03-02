@@ -47,6 +47,8 @@
     <Compile Include="ch14-delegates\DelegateDemo.cs" />
     <Compile Include="ch18-generics\MyStack.cs" />
     <Compile Include="ch18-generics\Simple.cs" />
+    <Compile Include="ch21-asynchronous\AsyncDemo.cs" />
+    <Compile Include="ch21-asynchronous\MyDownloadString.cs" />
     <Compile Include="ch23-exception\ExceptionDemo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
