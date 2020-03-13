@@ -26,6 +26,8 @@ namespace IllustratedCSharp
             //TestException();
 
             TestMyDownloadString();
+
+            //TestFileName();
         }
 
         static void TestGenericClass()
@@ -130,6 +132,13 @@ namespace IllustratedCSharp
         {
             MyDownloadString ds = new MyDownloadString();
             ds.DoRun();
+        }
+
+        private static void TestFileName()
+        {
+            string fileName = "锡滨政发〔2020〕2号(滨湖区2020年招商工作意见).doc";
+            string fileType = fileName.Substring(fileName.LastIndexOf('.') + 1).ToLower().Trim();
+            Console.WriteLine(fileType);
         }
 
     }
