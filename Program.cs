@@ -6,6 +6,7 @@ using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,13 @@ namespace IllustratedCSharp
 
             //TestException();
 
-            TestMyDownloadString();
+            //TestMyDownloadString();
 
             //TestFileName();
+
+            //ConnectODBCSqlserver();
+
+            ConnectDMDB();
         }
 
         static void TestGenericClass()
@@ -139,6 +144,74 @@ namespace IllustratedCSharp
             string fileName = "锡滨政发〔2020〕2号(滨湖区2020年招商工作意见).doc";
             string fileType = fileName.Substring(fileName.LastIndexOf('.') + 1).ToLower().Trim();
             Console.WriteLine(fileType);
+        }
+
+        private static void ConnectODBCSqlserver()
+        {
+            string connectionString = "Driver={ODBC Driver 17 for SQL Server};Server=192.168.0.36;Database=Wesoft_OA;Uid=sa;Pwd=sa;DBType=SQL";
+            //定义SqlConnection对象实例
+            OdbcConnection odbcCon = new OdbcConnection(connectionString);
+            OdbcDataAdapter adapter = new OdbcDataAdapter();
+            //string strUpdate = "Update TestOdbc Set TestOdbc=?";
+            string strUpdate = "Update FrameModule Set MODULENAME=?,VERSION=?,HASFUNCTION=?,SERIALNO=?,STATE=?,UPDATETIME=? Where ID=?";
+            OdbcCommand cmd = new OdbcCommand(strUpdate, odbcCon);
+           
+            cmd.Parameters.Add("@ModuleName", OdbcType.NVarChar, 50).Value = "系统框架";
+            cmd.Parameters.Add("@Version", OdbcType.NVarChar, 50).Value = "Wesoft";
+            cmd.Parameters.Add("@HasFunction", OdbcType.Int).Value = 1;
+            cmd.Parameters.Add("@SerialNo", OdbcType.Int).Value = 9999;
+            cmd.Parameters.Add("@State", OdbcType.Int).Value = 1;
+
+            // 不指定 param.Scale的话，秒精度会超出数据库字段长度。
+            OdbcParameter param = new OdbcParameter("UpdateTime", OdbcType.DateTime);
+            param.Value = DateTime.Now;
+            param.Precision = 23;
+            param.Scale = 3;
+            cmd.Parameters.Add(param);
+            //cmd.Parameters.Add("@UpdateTime", OdbcType.DateTime, 5).Value = DateTime.Now;
+            cmd.Parameters.Add("@KeyFieldValue", OdbcType.Int).Value = 1;
+            
+            
+            //cmd.Parameters.Add("@TestOdbc", OdbcType.DateTime,7).Value = DateTime.Now;
+            
+            try
+            {
+                odbcCon.Open();
+                cmd.ExecuteNonQuery();
+            } catch (Exception err)
+            {
+                Console.WriteLine(err.StackTrace);
+                throw;
+            }
+            finally
+            {
+                odbcCon.Close();
+                odbcCon.Dispose();
+            }
+            
+        }
+
+        private static OdbcConnection ConnectDMDB()
+        {
+            string ConnString = "DSN=dmdb2;Driver={DM8 ODBC DRIVER};Server=192.168.0.211:5236;Uid=WESOFTOA;PWD=P@ssw0rd1";
+            OdbcConnection conn = new OdbcConnection(ConnString);
+            try
+            {
+                conn.Open();
+                Console.WriteLine("连接成功");
+                return conn;
+            }catch(Exception err)
+            {
+                Console.WriteLine(err.Message);
+                Console.WriteLine(err.StackTrace);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+
+            return null;
         }
 
     }
