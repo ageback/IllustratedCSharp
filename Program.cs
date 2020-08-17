@@ -18,7 +18,8 @@ namespace IllustratedCSharp
         static void Main(string[] args)
         {
             //TestGenericMethod();
-            //TestGenericClass();
+            TestGenericClass();
+            Test泛型扩展方法();
             //DelegateDemo.TestMyDel();
 
             //Console.WriteLine(_testNetVersion("4.8").ToString());
@@ -32,7 +33,15 @@ namespace IllustratedCSharp
 
             //ConnectODBCSqlserver();
 
-            ConnectDMDB();
+            //ConnectDMDB();
+        }
+
+        static void Test泛型扩展方法()
+        {
+            var intHolder = new Holder<int>(3, 5, 7);
+            var stringHolder = new Holder<string>("a1", "b2", "c3");
+            intHolder.Print();
+            stringHolder.Print();
         }
 
         static void TestGenericClass()
