@@ -18,16 +18,16 @@ namespace IllustratedCSharp
         static void Main(string[] args)
         {
             //TestGenericMethod();
-            TestGenericClass();
-            Test泛型扩展方法();
+            //TestGenericClass();
+            //Test泛型扩展方法();
             //DelegateDemo.TestMyDel();
 
             //Console.WriteLine(_testNetVersion("4.8").ToString());
             //Console.WriteLine(_newTestNetVersion("4.5").ToString());
 
             //TestException();
-
-            //TestMyDownloadString();
+            //TestMyDownloadStringSingleThread();
+            TestMyDownloadStringAsync();
 
             //TestFileName();
 
@@ -142,9 +142,15 @@ namespace IllustratedCSharp
             demo.ExceptionChain();
         }
 
-        private static void TestMyDownloadString()
+        private static void TestMyDownloadStringAsync()
         {
             MyDownloadString ds = new MyDownloadString();
+            ds.DoRun();
+        }
+
+        private static void TestMyDownloadStringSingleThread()
+        {
+            MyDownloadStringSingleThread ds = new MyDownloadStringSingleThread();
             ds.DoRun();
         }
 
