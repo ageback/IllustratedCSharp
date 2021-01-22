@@ -26,11 +26,11 @@ namespace MessagePump
             InitializeComponent();
         }
 
-        private void btnDoStuff_Click(object sender, RoutedEventArgs e)
+        private async void btnDoStuff_Click(object sender, RoutedEventArgs e)
         {
             btnDoStuff.IsEnabled = false;
             lblStatus.Content = "Doing Stuff";
-            Thread.Sleep(4000);
+            await Task.Delay(4000);
             lblStatus.Content = "Not Doing Anything";
             btnDoStuff.IsEnabled = true;
         }
