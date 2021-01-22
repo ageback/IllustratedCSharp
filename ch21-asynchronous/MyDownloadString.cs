@@ -18,6 +18,15 @@ namespace IllustratedCSharp.ch21_asynchronous
             sw.Start();
             Task<int> t1 = CounterCharactersAsync(1, "https://www.baidu.com");
             Task<int> t2 = CounterCharactersAsync(2, "http://www.qq.com");
+
+            //Task.WaitAll(t1, t2);
+            //Task.WaitAny(t1, t2);
+
+            Console.WriteLine("Task 1: {0} Finished", t1.IsCompleted ? "" : "Not");
+            Console.WriteLine("Task 2: {0} Finished", t2.IsCompleted ? "" : "Not");
+
+            Console.ReadLine();
+
             CountToALargeNumber(1, LargeNumber);
             CountToALargeNumber(2, LargeNumber);
             CountToALargeNumber(3, LargeNumber);

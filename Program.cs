@@ -27,8 +27,10 @@ namespace IllustratedCSharp
 
             //TestException();
             //TestMyDownloadStringSingleThread();
-            //TestMyDownloadStringAsync();
-            TaskCancel.TaskCancelTest();
+            TestMyDownloadStringAsync();
+            //TaskCancel.TaskCancelTest();
+
+            //DoAsyncStuff.DoAsyncStuffTest();
 
             //TestFileName();
 
