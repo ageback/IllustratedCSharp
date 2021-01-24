@@ -57,6 +57,7 @@
     <Compile Include="ch18-generics\ExtendGenericMethod.cs" />
     <Compile Include="ch18-generics\MyStack.cs" />
     <Compile Include="ch18-generics\Simple.cs" />
+    <Compile Include="ch20-LINQ\LinqJoinDemo.cs" />
     <Compile Include="ch21-asynchronous\AsyncDemo.cs" />
     <Compile Include="ch21-asynchronous\DoAsyncStuff.cs" />
     <Compile Include="ch21-asynchronous\MyDownloadString.cs" />

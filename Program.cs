@@ -27,7 +27,8 @@ namespace IllustratedCSharp
 
             //TestException();
             //TestMyDownloadStringSingleThread();
-            TestMyDownloadStringAsync();
+            //TestMyDownloadStringAsync();
+
             //TaskCancel.TaskCancelTest();
 
             //DoAsyncStuff.DoAsyncStuffTest();
@@ -37,6 +38,8 @@ namespace IllustratedCSharp
             //ConnectODBCSqlserver();
 
             //ConnectDMDB();
+
+            ch20_LINQ.LinqJoinDemo.Test();
         }
 
         static void Test泛型扩展方法()
