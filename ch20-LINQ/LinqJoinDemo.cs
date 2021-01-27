@@ -36,8 +36,22 @@ namespace IllustratedCSharp.ch20_LINQ
             {
                 Console.WriteLine($"选择历史课的学生：{q}");
             }
-            Console.WriteLine($"选择历史课的学生人数：{query.Count()}");
+            Console.WriteLine($"选择历史课的学生人数：{query.Count()}\n");
+            Console.WriteLine("各课的学生分组：");
 
+            var query2 = from s in students
+                         join c in studentInCourses
+                         on s.StID equals c.StID
+                         //where c.CourseName == "历史"
+                         group s by c.CourseName;
+            foreach(var g in query2)
+            {
+                Console.WriteLine($"{g.Key}");
+                foreach(var s in g)
+                {
+                    Console.WriteLine($"     {s.LastName}");
+                }
+            }
         }
     }
 
