@@ -46,7 +46,7 @@ namespace IllustratedCSharp.ch20_LINQ
                          group s by c.CourseName;
             foreach(var g in query2)
             {
-                Console.WriteLine($"{g.Key}");
+                Console.WriteLine($"{g.Key}：");
                 foreach(var s in g)
                 {
                     Console.WriteLine($"     {s.LastName}");
