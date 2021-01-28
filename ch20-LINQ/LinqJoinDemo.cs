@@ -49,8 +49,24 @@ namespace IllustratedCSharp.ch20_LINQ
                 Console.WriteLine($"{g.Key}：");
                 foreach(var s in g)
                 {
-                    Console.WriteLine($"     {s.LastName}");
+                    Console.WriteLine($"|---- {s.LastName}");
                 }
+            }
+
+
+            // 查询延续：into 子句
+            var groupA = new[] { 3, 4, 5, 6 };
+            var groupB = new[] { 4, 5, 6, 7 };
+
+            var someInts = from a in groupA
+                           join b in groupB
+                           on a equals b
+                           into groupAandB
+                           from c in groupAandB
+                           select c;
+            foreach(var v in someInts)
+            {
+                Console.Write($"{v} ");
             }
         }
     }
